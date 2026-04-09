@@ -34,7 +34,7 @@ def main():
     st.title("🕵️ Phishing Email Detector")
     st.markdown("Paste the content of an
 email below to determine if it is 
-**Phishing** or **Safe (Legitimate)**.")
+**Phishing** or not.")
     
     # Robust path handling for both local and Streamlit Cloud
 # First, try simple relative paths (works on Streamlit Cloud because working dir = repo root)
