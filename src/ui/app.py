@@ -1,4 +1,3 @@
-cat > src/ui/app.py << 'EOF'
 import streamlit as st
 import joblib
 import os
@@ -41,8 +40,7 @@ def main():
             vectorizer = joblib.load(vectorizer_path)
             return model, vectorizer
         except FileNotFoundError as e:
-            st.error(f"❌ Model or Vectorizer file not found.\n\nError: {e}\n\nTried:\n- {model_path}\n- 
-{vectorizer_path}")
+            st.error("❌ Model or Vectorizer file not found.\n\nError: " + str(e) + "\n\nTried:\n- " + model_path + "\n- " + vectorizer_path)
             st.stop()
 
     model, vectorizer = load_artifacts()
@@ -61,4 +59,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-EOF 
