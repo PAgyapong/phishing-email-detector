@@ -34,30 +34,33 @@ def main():
     st.title("🕵️ Phishing Email Detector")
     st.markdown("Paste the content of an email below to determine if it is **Phishing** or **Safe (Legitimate)**.")
     
-    # Dynamic path mapping robust to where the script is executed from
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.dirname(os.path.dirname(current_dir))
+    # Robust path handling for both local and Streamlit Cloud
+# First, try simple relative paths (works on Streamlit Cloud because working dir = repo root)
+  model_path = 'models/best_phishing_model.pkl'
+vectorizer_path = 'data/vectorizer.joblib'
+
+# If not found (e.g., when running locally from src/ui/ folder), fallback to absolute path from this file
+   if not os.path.exists(model_path):
+     base = 
+  os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    model_path = os.path.join(base, 'models', 'best_phishing_model.pkl')
+    vectorizer_path = os.path.join(base, 'data', 'vectorizer.joblib')
+
+@st.cache_resource
+def load_artifacts():
+    try:
+        model = joblib.load(model_path)
+        vectorizer = joblib.load(vectorizer_path)
+        return model, vectorizer
+    except FileNotFoundError as e:
+        st.error(f"❌ Model or Vectorizer file not found.\n\nError: {e}\n\nTried:\n- {model_path}\n- 
+{vectorizer_path}")
+        st.stop() 
+       # stops execution here
+
+     model, vectorizer = load_artifacts()    
+
     
-    model_path = os.path.join(project_root, 'models', 'best_phishing_model.pkl')
-    vectorizer_path = os.path.join(project_root, 'data', 'vectorizer.joblib')
-    
-    # Lazy model loading
-    @st.cache_resource
-    def load_artifacts():
-        try:
-            model = joblib.load(model_path)
-            vectorizer = joblib.load(vectorizer_path)
-            return model, vectorizer
-        except FileNotFoundError:
-            return None, None
-
-    model, vectorizer = load_artifacts()
-
-    if not model or not vectorizer:
-        st.error("🚨 Error: Model or Vectorizer file not found.")
-        st.info("Have you completed both the `preprocess.py` and `train.py` steps first?")
-        st.stop()
-
     email_input = st.text_area("Email Content:", height=200, placeholder="e.g. You have won $10,000, click here to claim...")
 
     if st.button("Detect", type="primary", use_container_width=True):
