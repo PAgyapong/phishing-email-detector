@@ -32,15 +32,19 @@ st.set_page_config(page_title="Phishing Email Detector", page_icon="🕵️", la
 
 def main():
     st.title("🕵️ Phishing Email Detector")
-    st.markdown("Paste the content of an email below to determine if it is **Phishing** or **Safe (Legitimate)**.")
+    st.markdown("Paste the content of an
+email below to determine if it is 
+**Phishing** or **Safe (Legitimate)**.")
     
     # Robust path handling for both local and Streamlit Cloud
 # First, try simple relative paths (works on Streamlit Cloud because working dir = repo root)
-  model_path = 'models/best_phishing_model.pkl'
-vectorizer_path = 'data/vectorizer.joblib'
+    model_path = 'models/
+best_phishing_model.pkl'
+    vectorizer_path = 'data/
+vectorizer.joblib'
 
 # If not found (e.g., when running locally from src/ui/ folder), fallback to absolute path from this file
-   if not os.path.exists(model_path):
+    if not os.path.exists(model_path):
      base = 
   os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     model_path = os.path.join(base, 'models', 'best_phishing_model.pkl')
