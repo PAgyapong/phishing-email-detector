@@ -1,0 +1,16 @@
+# Environments
+.venv/
+__pycache__/
+*.pyc
+
+# Data and Models
+data/
+models/
+*.npy
+*.csv
+*.tsv
+*.joblib
+*.pkl
+
+# OS files
+.DS_Store
