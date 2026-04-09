@@ -1,0 +1,31 @@
+cat > THIRD_PARTY_NOTICES.txt << 'EOF'
+Third-Party Licenses and Attributions
+=====================================
+
+This project uses the following open-source components:
+
+1. scikit-learn (BSD 3-Clause License)
+   Copyright (c) 2007-2025 The scikit-learn developers.
+   Full license: https://github.com/scikit-learn/scikit-learn/blob/main/COPYING
+
+2. nltk (Apache License 2.0)
+   Copyright (c) 2005-2025 NLTK Project.
+   Full license: https://github.com/nltk/nltk/blob/develop/LICENSE.txt
+
+3. pandas (BSD 3-Clause License)
+   Copyright (c) 2008-2011, AQR Capital Management, LLC, Lambda Foundry, Inc. and PyData Development Team.
+   Full license: https://github.com/pandas-dev/pandas/blob/main/LICENSE
+
+4. streamlit (Apache License 2.0)
+   Copyright (c) 2019-2025 Streamlit Inc.
+   Full license: https://github.com/streamlit/streamlit/blob/develop/LICENSE
+
+5. joblib (BSD 3-Clause License)
+   Copyright (c) 2008-2015, Olivier Grisel.
+   Full license: https://github.com/joblib/joblib/blob/master/LICENSE.txt
+
+6. SMS Spam Collection Dataset (Creative Commons Attribution 4.0 International)
+   Source: UCI Machine Learning Repository (https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection)
+   License: https://creativecommons.org/licenses/by/4.0/
+   Attribution: This dataset was originally created by Tiago A. Almeida and José María Gómez Hidalgo.
+EOF
