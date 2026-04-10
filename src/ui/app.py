@@ -18,10 +18,11 @@ def clean_text(text):
     words = [stemmer.stem(w) for w in words if w not in stop_words]
     return ' '.join(words)
 
-st.set_page_config(page_title="Phishing Email Detector", page_icon="📈", layout="centered")
+st.set_page_config(page_title="Phishing Email Detector", page_icon="🕵️ ", 
+layout="centered")
 
 def main():
-    st.title("📈 Phishing Email Detector")
+    st.title("🕵️  Phishing Email Detector")
     st.markdown("Paste the content of an email below to determine if it is **Phishing** or not.")
 
     # Path handling: try relative first, fallback to absolute
@@ -53,9 +54,13 @@ def main():
             with st.spinner("Analyzing..."):
                 processed = clean_text(email_input)
                 vec = vectorizer.transform([processed])
+
                 pred = model.predict(vec)[0]
-                result = "🎣 Phishing" if pred == 1 else "✅ Safe"
-                st.subheader(f"Prediction: {result}")
+                     if pred ==1:
+                        st.error("🎣 PHISHING DETECTED")
+                     else:
+                        st.success("✅ SAFE EMAIL")
+
 
 if __name__ == "__main__":
     main()
