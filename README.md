@@ -1,3 +1,8 @@
+##
+[![Streamlit App](https://static.streamlit.io/badges/
+streamlit_badge_black_white.svg)]
+(https://email-phish-detector.streamlit.app)
+
 # Phishing Email Detector
 
 A machine learning web app that classifies emails as **Phishing** or **Safe** using TF-IDF and a Naive Bayes classifier.
