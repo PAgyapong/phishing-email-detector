@@ -54,13 +54,13 @@ def main():
             with st.spinner("Analyzing..."):
                 processed = clean_text(email_input)
                 vec = vectorizer.transform([processed])
-
                 pred = model.predict(vec)[0]
-                     if pred ==1:
-                        st.error("🎣 PHISHING DETECTED")
-                     else:
-                        st.success("✅ SAFE EMAIL")
-
+                if pred == 1:
+                    st.error("⚠️ PHISHING DETECTED")
+                else:
+                    st.success("✅ SAFE EMAIL")
 
 if __name__ == "__main__":
     main()
+
+
